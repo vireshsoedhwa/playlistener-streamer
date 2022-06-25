@@ -25,7 +25,7 @@ RUN set -ex; \
 RUN mkdir -p /run/daphne
 
 COPY manage.py supervisord.conf ./
-# COPY docker-entrypoint.sh /usr/local/bin
+COPY docker-entrypoint.sh /usr/local/bin
 
 COPY /nginx/nginx.conf /etc/nginx/nginx.conf
 COPY streamer streamer
@@ -33,5 +33,5 @@ COPY streamer streamer
 WORKDIR /code
 EXPOSE 9000
 
-# ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 # CMD ["supervisord", "-c", "supervisord.conf", "-n"]
