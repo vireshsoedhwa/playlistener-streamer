@@ -1,5 +1,5 @@
 # FROM python:3.10-slim-buster
-FROM ubuntu:22.10
+FROM ubuntu:18.04
 
 ENV PYTHONUNBUFFERED 1
 ENV PATH /code:/opt/venv/bin:$PATH
@@ -22,6 +22,22 @@ RUN set -ex; \
             zlib1g \
             zlib1g-dev \
             libssl-dev \
+            libgstreamer1.0-dev \
+            libgstreamer-plugins-base1.0-dev \
+            libgstreamer-plugins-bad1.0-dev \
+            gstreamer1.0-plugins-base \
+            gstreamer1.0-plugins-good \
+            gstreamer1.0-plugins-bad \
+            gstreamer1.0-plugins-ugly \
+            gstreamer1.0-libav \
+            gstreamer1.0-doc \
+            gstreamer1.0-tools \
+            gstreamer1.0-x \
+            gstreamer1.0-alsa \
+            gstreamer1.0-gl \
+            gstreamer1.0-gtk3 \
+            gstreamer1.0-qt5 \
+            gstreamer1.0-pulseaudio \
         ;
 
 RUN wget https://github.com/sergey-dryabzhinsky/nginx-rtmp-module/archive/refs/tags/v1.2.2-r1.tar.gz --no-check-certificate
