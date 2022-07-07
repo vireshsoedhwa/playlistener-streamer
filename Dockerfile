@@ -1,12 +1,12 @@
-# FROM python:3.10-slim-buster
-FROM ubuntu:20.04
+FROM python:3.10-slim-buster
+# FROM ubuntu:20.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-# ENV PYTHONUNBUFFERED 1
-# ENV PATH /code:/opt/venv/bin:$PATH
+ENV PYTHONUNBUFFERED 1
+ENV PATH /code:/opt/venv/bin:$PATH
 
-# WORKDIR /code
+WORKDIR /code
 
 COPY requirements.txt ./
 
@@ -19,6 +19,9 @@ RUN set -ex; \
             ffmpeg \
             wget \
             gcc \
+            alsa-utils \
+            pulseaudio \
+            vlc \
         ;
 
 # RUN set -ex; \

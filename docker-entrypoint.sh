@@ -31,13 +31,21 @@ set -e
 
 # -content_type audio/mpeg -f mp3
 
-# icecast://source:str3am@35.237.210.58:8000/domlive
+# icecast://source:str3am@35.237.210.58:8000/live
 
 # ffmpeg -stream_loop -1 -y -i test2.mp3 -f mp3 -acodec mp3 -ar 48000 -content_type audio/mpeg icecast://source:hackme@127.0.0.1:8000/live
 
 # ffmpeg rtp://127.0.0.1:1234 -f mp3 -acodec mp3 -ar 48000 -content_type audio/mpeg icecast://source:hackme@127.0.0.1:8000/live
 
-#  rtp://127.0.0.1:1234
+# ffmpeg -stream_loop -1 -y -i test2.mp3 -f mp3 -acodec mp3 -ar 48000 -content_type audio/mpeg
+
+# ffplay -nodisp test2.mp3
+
+# ffplay -nodisp test2.mp3 rtsp://127.0.0.1:9000/player
+
+ffmpeg -i rtp://127.0.0.1:9000/play -f mp3 -acodec mp3 -ar 48000 -content_type audio/mpeg icecast://source:hackme@127.0.0.1:8000/live
+
+ffmpeg -y -i test.mp3 -f rtp rtp://127.0.0.1:9000/play
 
 >&2 echo "icecast running..."
 tail -f /dev/null
@@ -52,7 +60,6 @@ tail -f /dev/null
 # gst-launch-1.0 audiotestsrc ! audioconvert ! audioresample ! rtmpsink location=rtmp://localhost/show/stream live=1
 
 # gst-launch-1.0 -v videotestsrc ! ffenc_flv ! flvmux ! rtmpsink location='rtmp://localhost/show/stream live=1'
-
 
 # gst-launch-1.0 filesrc location=test.mp3 ! mpg123audiodec ! audioconvert ! flacenc ! filesink location=test.flac
 
