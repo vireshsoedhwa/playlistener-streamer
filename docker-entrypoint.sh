@@ -27,42 +27,13 @@ set -e
 
 /etc/init.d/icecast2 start
 
-# ffmpeg -ac 1 -f alsa -i hw:0,0 -acodec libmp3lame -ab 32k -ac 1
-
-# -content_type audio/mpeg -f mp3
-
-# icecast://source:str3am@35.237.210.58:8000/live
-
-# ffmpeg -stream_loop -1 -y -i test2.mp3 -f mp3 -acodec mp3 -ar 48000 -content_type audio/mpeg icecast://source:hackme@127.0.0.1:8000/live
-
-# ffmpeg rtp://127.0.0.1:1234 -f mp3 -acodec mp3 -ar 48000 -content_type audio/mpeg icecast://source:hackme@127.0.0.1:8000/live
-
-# ffmpeg -stream_loop -1 -y -i test2.mp3 -f mp3 -acodec mp3 -ar 48000 -content_type audio/mpeg
-
-# ffplay -nodisp test2.mp3
-
-# ffplay -nodisp test2.mp3 rtsp://127.0.0.1:9000/player
-
-ffmpeg -i rtp://127.0.0.1:9000/play -f mp3 -acodec mp3 -ar 48000 -content_type audio/mpeg icecast://source:hackme@127.0.0.1:8000/live
-
-ffmpeg -y -i test.mp3 -f rtp rtp://127.0.0.1:9000/play
-
 >&2 echo "icecast running..."
+# mpd --stderr --no-daemon --verbose
+mpd
+mpc ls | mpc add
+mpc play
+
 tail -f /dev/null
-# ffmpeg -re -i test.mp3 -f flv -acodec libmp3lame -ab 64 -ac 1 rtmp://localhost/show/stream
-
-# ffmpeg -re -i test.mp3 -acodec aac -strict experimental -ab 96k -ar 44100 -vn -f flv rtmp://localhost/show/stream
-
-# ffmpeg -y -i test.mp3 -acodec mp3 -vn -f flv rtmp://localhost/show/stream
-
-# gst-launch-1.0 audiotestsrc ! audioconvert ! audioresample ! udpsink host=127.0.0.1 sync=false
-
-# gst-launch-1.0 audiotestsrc ! audioconvert ! audioresample ! rtmpsink location=rtmp://localhost/show/stream live=1
-
-# gst-launch-1.0 -v videotestsrc ! ffenc_flv ! flvmux ! rtmpsink location='rtmp://localhost/show/stream live=1'
-
-# gst-launch-1.0 filesrc location=test.mp3 ! mpg123audiodec ! audioconvert ! flacenc ! filesink location=test.flac
-
 
 # Start Django dev server
 # >&2 echo "Starting runserver..."

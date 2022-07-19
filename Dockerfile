@@ -21,7 +21,9 @@ RUN set -ex; \
             gcc \
             alsa-utils \
             pulseaudio \
-            vlc \
+            mpd \
+            mpc \
+            # jackd2 \
         ;
 
 # RUN set -ex; \

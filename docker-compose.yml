@@ -15,6 +15,9 @@ services:
       context: .
     # command: python manage.py runserver 0.0.0.0:9002
     # command: [nginx, '-g', 'daemon off;']
+    # privileged: true
+    # devices:
+    #   - /dev/snd
     volumes:
       - .:/code
     environment:
@@ -26,10 +29,10 @@ services:
       - db
     ports:
       - "9000:9000"    
-      # - "9001:9001"
-      # - "9002:9002"
+      # - "5004:5004"
+      - "6600:6600"
       - "8000:8000"
-      - "1234:1234"
+      # - "1234:1234"
 
   # web:
   #   image: nginx:1.23.0
