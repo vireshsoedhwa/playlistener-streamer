@@ -1,13 +1,16 @@
 version: '3.8'
 
 services:
-  # db:
-  #   image: postgres:alpine
-  #   restart: always
-  #   volumes:
-  #     - db:/var/lib/postgresql/data
-  #   env_file:
-  #     - db.env
+  streamerdb:
+    image: postgres:alpine
+    restart: always
+    volumes:
+      - streamerdbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_HOST=streamerdb
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
 
   app:
     image: streamer
@@ -26,7 +29,7 @@ services:
     env_file:
       - db.env
     depends_on:
-      - db
+      - streamerdb
     ports:
       - "9000:9000"    
       # - "5004:5004"
@@ -34,6 +37,8 @@ services:
       - "8000:8000"
       # - "1234:1234"
 
+volumes:
+  streamerdbdata:
   # web:
   #   image: nginx:1.23.0
   #   volumes:
@@ -43,5 +48,6 @@ services:
   #   ports:
   #     - "8080:8080"
 
-volumes:
-  db:
+# volumes:
+#   shareddata:
+#     external: true

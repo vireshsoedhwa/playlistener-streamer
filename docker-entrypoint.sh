@@ -30,8 +30,9 @@ set -e
 >&2 echo "icecast running..."
 # mpd --stderr --no-daemon --verbose
 mpd
-mpc ls | mpc add
-mpc play
+# mpc ls | mpc add
+# mpc --stderr --no-daemon --verbose play
+# mpc play
 
 tail -f /dev/null
 
