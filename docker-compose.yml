@@ -13,25 +13,24 @@ services:
       - POSTGRES_USER=postgres
 
   app:
+    command: python manage.py runserver 0.0.0.0:9001
     image: streamer
     build:
       context: .
-    # command: python manage.py runserver 0.0.0.0:9002
     # command: [nginx, '-g', 'daemon off;']
     # privileged: true
-    # devices:
-    #   - /dev/snd
     volumes:
       - .:/code
     environment:
-      - POSTGRES_HOST=db
+      - POSTGRES_HOST=streamerdb
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
       - DEBUG=True
-    env_file:
-      - db.env
     depends_on:
       - streamerdb
     ports:
-      - "9000:9000"    
+      - "9001:9001"    
       # - "5004:5004"
       - "6600:6600"
       - "8000:8000"
