@@ -6,14 +6,14 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: app
+      app: streamer
   template:
     metadata:
       labels:
-        app: app
+        app: streamer
     spec:
       containers:
-        - name: app
+        - name: streamer
           image: localhost:32000/icecast
           resources:
             requests:
@@ -43,7 +43,7 @@ spec:
         persistentVolumeClaim:
           claimName: plstreamerdata
       containers:
-        - name: app
+        - name: default-player
           image: localhost:32000/player
           resources:
             requests:
@@ -77,7 +77,7 @@ spec:
         persistentVolumeClaim:
           claimName: plstreamerdata
       containers:
-        - name: app
+        - name: dancehall-player
           image: localhost:32000/player
           resources:
             requests:
