@@ -17,6 +17,7 @@ echo "music_directory \"/code/data/"${DIR}"\"" >> /etc/mpd_custom.conf
 /etc/init.d/icecast2 start
 >&2 echo "icecast running..."
 mpd
+sleep 2
 >&2 echo "mpd running..."
 
 mpc add /
