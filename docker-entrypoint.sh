@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-tail -f /dev/null
+# tail -f /dev/null
 mkdir -p /code/playlists
 rm -f /code/db
 touch /code/db
@@ -24,7 +24,7 @@ sleep 2
 mpc add /
 >&2 echo "playlist created..."
 mpc random on
->&2 echo "playlist randomized..."
+mpc repeat on
 >&2 echo "current playlist content..."
 mpc playlist
 mpc play

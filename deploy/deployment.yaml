@@ -30,5 +30,5 @@ spec:
           - configMapRef:
               name: plstreamer-config
           volumeMounts:
-          - mountPath: /code/data
+          - mountPath: /code
             name: data
