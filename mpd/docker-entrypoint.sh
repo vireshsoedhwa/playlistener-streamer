@@ -26,5 +26,6 @@ mpc repeat on
 mpc playlist
 mpc play
 
->&2 echo "Starting mpc play..."
+
+>&2 echo "Starting player image version: `cat /code/version`"
 exec "$@"

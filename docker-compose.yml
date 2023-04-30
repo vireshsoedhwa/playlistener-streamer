@@ -32,8 +32,5 @@ services:
     image: icecast
     build:
       context: icecast
-    # privileged: true
-    volumes:
-      - ./icecast:/code
     ports:
       - "9000:9000"
