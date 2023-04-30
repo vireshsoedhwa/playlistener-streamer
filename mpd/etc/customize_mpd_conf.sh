@@ -10,6 +10,7 @@ audio_output {
 	type		\"shout\"
 	encoder		\"vorbis\"	
 	name		\""${GENRE}"\"
+	genre		\""${GENRE}"\"
 	host		\""${ICECAST_HOST}"\"
 	port		\"9000\"
 	mount		\"/live/"${GENRE}"\"

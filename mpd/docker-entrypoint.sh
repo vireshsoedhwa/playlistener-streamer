@@ -1,13 +1,14 @@
 #!/bin/sh
 set -e
 
+>&2 echo "loading playlist category: "${GENRE}""
+[ ! -d "/code/data/"${GENRE}"" ] && echo "Directory /code/data/"${GENRE}" DOES NOT exists" && exit 1
+
 mkdir -p /code/playlists
 rm -f /code/db
 touch /code/db
 chmod 777 /code/db
 > /etc/mpd_custom.conf
->&2 echo "loading playlist category: "${GENRE}""
-[ ! -d "/code/data/"${GENRE}"" ] && echo "Directory /code/data/"${GENRE}" DOES NOT exists" && exit 1
 
 . /etc/customize_mpd_conf.sh
 
