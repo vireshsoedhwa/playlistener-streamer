@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-# tail -f /dev/null
+tail -f /dev/null
 mkdir -p /code/playlists
 rm -f /code/db
 touch /code/db
