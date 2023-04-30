@@ -32,11 +32,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: app
+      app: default-player
   template:
     metadata:
       labels:
-        app: app
+        app: default-player
     spec:
       volumes:
       - name: data
@@ -66,11 +66,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: app
+      app: dancehall-player
   template:
     metadata:
       labels:
-        app: app
+        app: dancehall-player
     spec:
       volumes:
       - name: data
