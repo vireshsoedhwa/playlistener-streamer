@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    command: python manage.py runserver 0.0.0.0:9001
+    command: tail -f /var/log/mpd/mpd.log
     image: streamer
     build:
       context: .
@@ -11,17 +11,9 @@ services:
     volumes:
       - .:/code
     environment:
-      - POSTGRES_HOST=streamerdb
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - DEBUG=True
+      - DIR=folder2
     ports:
-      - "9001:9001"    
-      # - "5004:5004"
-      - "6600:6600"
       - "8000:8000"
-      # - "1234:1234"
 
 volumes:
   streamerdbdata:

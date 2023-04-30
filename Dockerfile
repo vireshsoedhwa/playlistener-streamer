@@ -43,7 +43,6 @@ VOLUME ["/config", "/var/log/icecast2", "/etc/icecast2"]
 RUN chown -R icecast2 /etc/icecast2
 
 EXPOSE 8000
-EXPOSE 8080
 
 ENTRYPOINT ["docker-entrypoint.sh"]
-# CMD ["supervisord", "-c", "supervisord.conf", "-n"]
+CMD ["tail", "-f", "/var/log/mpd/mpd.log"]
