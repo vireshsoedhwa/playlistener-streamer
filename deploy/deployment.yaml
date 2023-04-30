@@ -94,3 +94,39 @@ spec:
           volumeMounts:
           - mountPath: /code
             name: data
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rnb-player
+  namespace: plstreamer
+spec:
+  selector:
+    matchLabels:
+      app: rnb-player
+  template:
+    metadata:
+      labels:
+        app: rnb-player
+    spec:
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: plstreamerdata
+      containers:
+        - name: rnb-player
+          image: localhost:32000/player
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+          env:
+          - name: GENRE
+            value: "rnb"
+          - name: ICECAST_HOST
+            value: "plstreamer-svc"
+          volumeMounts:
+          - mountPath: /code
+            name: data
