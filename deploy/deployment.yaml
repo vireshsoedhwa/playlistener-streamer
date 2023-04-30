@@ -28,11 +28,7 @@ spec:
             protocol: TCP
           envFrom:
           - configMapRef:
-              name: plweb-config
-          - secretRef:
-              name: postgressecret
-          - secretRef:
-              name: app-secret
+              name: plstreamer-config
           volumeMounts:
           - mountPath: /code/data
             name: data
