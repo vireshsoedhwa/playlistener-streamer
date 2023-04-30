@@ -1,7 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app
+  name: streamer
+  namespace: plstreamer
+spec:
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: app
+          image: localhost:32000/icecast
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+          ports:
+          - containerPort: 9000
+            protocol: TCP
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: default-player
   namespace: plstreamer
 spec:
   selector:
@@ -18,17 +44,50 @@ spec:
           claimName: plstreamerdata
       containers:
         - name: app
-          image: localhost:32000/plstreamer
+          image: localhost:32000/player
           resources:
             requests:
-              memory: "1024Mi"
+              memory: "128Mi"
               cpu: "250m"
-          ports:
-          - containerPort: 8000
-            protocol: TCP
-          envFrom:
-          - configMapRef:
-              name: plstreamer-config
+          env:
+          - name: GENRE
+            value: "default"
+          - name: ICECAST_HOST
+            value: "plstreamer-svc"
+          volumeMounts:
+          - mountPath: /code
+            name: data
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dancehall-player
+  namespace: plstreamer
+spec:
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: plstreamerdata
+      containers:
+        - name: app
+          image: localhost:32000/player
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+          env:
+          - name: GENRE
+            value: "dancehall"
+          - name: ICECAST_HOST
+            value: "plstreamer-svc"
           volumeMounts:
           - mountPath: /code
             name: data

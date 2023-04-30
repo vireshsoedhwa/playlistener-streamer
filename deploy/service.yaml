@@ -5,10 +5,10 @@ metadata:
   namespace: plstreamer
 spec:
   selector:
-    app: app
+    app: streamer
   ports:
   - name: app
     protocol: TCP
     port: 80
-    targetPort: 8000
+    targetPort: 9000
   type: NodePort
