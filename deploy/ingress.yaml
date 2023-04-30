@@ -6,6 +6,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/proxy-body-size: 1000m
+    nginx.ingress.kubernetes.io/app-root: /live
 spec:
   ingressClassName: public
   tls:
@@ -16,7 +17,7 @@ spec:
   - host: streamer.wieru.com
     http: 
       paths:
-        - path: /live
+        - path: /
           pathType: Prefix
           backend:
             service:
