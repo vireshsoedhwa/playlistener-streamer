@@ -23,6 +23,7 @@ spec:
           - containerPort: 9000
             protocol: TCP
 
+---
 
 apiVersion: apps/v1
 kind: Deployment
@@ -57,6 +58,8 @@ spec:
           volumeMounts:
           - mountPath: /code
             name: data
+
+---
 
 apiVersion: apps/v1
 kind: Deployment
