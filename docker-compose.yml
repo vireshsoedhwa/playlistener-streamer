@@ -1,17 +1,6 @@
 version: '3.8'
 
 services:
-  streamerdb:
-    image: postgres:alpine
-    restart: always
-    volumes:
-      - streamerdbdata:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_HOST=streamerdb
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-
   app:
     command: python manage.py runserver 0.0.0.0:9001
     image: streamer
@@ -27,8 +16,6 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - DEBUG=True
-    depends_on:
-      - streamerdb
     ports:
       - "9001:9001"    
       # - "5004:5004"
