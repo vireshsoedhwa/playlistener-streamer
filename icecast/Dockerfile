@@ -8,9 +8,7 @@ RUN set -ex; \
 
 COPY docker-entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-COPY icecast.xml icecast.xml
 COPY ./etc /etc
-# VOLUME ["/config", "/var/log/icecast2", "/etc/icecast2"]
 RUN chown -R icecast2 /etc/icecast2
 
 EXPOSE 9000
