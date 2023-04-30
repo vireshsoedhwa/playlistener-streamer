@@ -10,20 +10,22 @@ services:
       - ./mpd:/code
     environment:
       - GENRE=dancehall
+      - ICECAST_HOST=icecast
     depends_on:
       - icecast
 
-  # mpd_default:
-  #   command: tail -f /var/log/mpd/mpd.log
-  #   image: mpd
-  #   build:
-  #     context: mpd
-  #   volumes:
-  #     - ./mpd:/code
-  #   environment:
-  #     - DIR=default
-  #   depends_on:
-  #     - icecast
+  mpd_default:
+    command: tail -f /var/log/mpd/mpd.log
+    image: mpd
+    build:
+      context: mpd
+    volumes:
+      - ./mpd:/code
+    environment:
+      - GENRE=default
+      - ICECAST_HOST=icecast
+    depends_on:
+      - icecast
 
   icecast:
     command: tail -f /dev/null
