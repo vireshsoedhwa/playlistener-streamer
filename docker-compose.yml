@@ -1,53 +1,15 @@
 version: '3.8'
 
 services:
-  streamerdb:
-    image: postgres:alpine
-    restart: always
-    volumes:
-      - streamerdbdata:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_HOST=streamerdb
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-
   app:
+    command: tail -f /var/log/mpd/mpd.log
     image: streamer
     build:
       context: .
-    # command: python manage.py runserver 0.0.0.0:9002
-    # command: [nginx, '-g', 'daemon off;']
     # privileged: true
-    # devices:
-    #   - /dev/snd
     volumes:
       - .:/code
     environment:
-      - POSTGRES_HOST=db
-      - DEBUG=True
-    env_file:
-      - db.env
-    depends_on:
-      - streamerdb
+      - DIR=folder1
     ports:
-      - "9000:9000"    
-      # - "5004:5004"
-      - "6600:6600"
       - "8000:8000"
-      # - "1234:1234"
-
-volumes:
-  streamerdbdata:
-  # web:
-  #   image: nginx:1.23.0
-  #   volumes:
-  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-  #     - ./html:/usr/share/nginx/html:ro
-  #   command: [nginx-debug, '-g', 'daemon off;']
-  #   ports:
-  #     - "8080:8080"
-
-# volumes:
-#   shareddata:
-#     external: true
