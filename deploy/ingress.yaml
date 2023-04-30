@@ -16,7 +16,7 @@ spec:
   - host: streamer.wieru.com
     http: 
       paths:
-        - path: /
+        - path: /live
           pathType: Prefix
           backend:
             service:
