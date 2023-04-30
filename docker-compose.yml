@@ -1,15 +1,28 @@
 version: '3.8'
 
 services:
-  app:
-    command: tail -f /var/log/mpd/mpd.log
-    image: streamer
+  # app:
+  #   command: tail -f /var/log/mpd/mpd.log
+  #   image: streamer
+  #   build:
+  #     context: .
+  #   # privileged: true
+  #   volumes:
+  #     - .:/code
+  #   environment:
+  #     - DIR=folder1
+  #   ports:
+  #     - "8000:8000"
+
+  icecast:
+    command: tail -f /dev/null
+    image: icecast
     build:
-      context: .
+      context: ./icecast/
     # privileged: true
     volumes:
-      - .:/code
+      - ./icecast:/code
     environment:
       - DIR=folder1
     ports:
-      - "8000:8000"
+      - "9000:9000"
