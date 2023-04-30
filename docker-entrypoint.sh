@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
 
+tail -f /dev/null
 mkdir -p /code/playlists
 rm -f /code/db
 touch /code/db
@@ -27,7 +28,6 @@ mpc random on
 >&2 echo "current playlist content..."
 mpc playlist
 mpc play
-# tail -f /dev/null
 
 >&2 echo "Starting mpc play..."
 exec "$@"
