@@ -1,28 +1,37 @@
 version: '3.8'
 
 services:
-  # app:
+  mpd_dancehall:
+    command: tail -f /var/log/mpd/mpd.log
+    image: mpd
+    build:
+      context: mpd
+    volumes:
+      - ./mpd:/code
+    environment:
+      - GENRE=dancehall
+    depends_on:
+      - icecast
+
+  # mpd_default:
   #   command: tail -f /var/log/mpd/mpd.log
-  #   image: streamer
+  #   image: mpd
   #   build:
-  #     context: .
-  #   # privileged: true
+  #     context: mpd
   #   volumes:
-  #     - .:/code
+  #     - ./mpd:/code
   #   environment:
-  #     - DIR=folder1
-  #   ports:
-  #     - "8000:8000"
+  #     - DIR=default
+  #   depends_on:
+  #     - icecast
 
   icecast:
     command: tail -f /dev/null
     image: icecast
     build:
-      context: ./icecast/
+      context: icecast
     # privileged: true
     volumes:
       - ./icecast:/code
-    environment:
-      - DIR=folder1
     ports:
       - "9000:9000"
