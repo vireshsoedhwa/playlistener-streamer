@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  namespace: plstreamer
+spec:
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: plstreamerdata
+      containers:
+        - name: app
+          image: localhost:32000/plstreamer
+          resources:
+            requests:
+              memory: "1024Mi"
+              cpu: "250m"
+          ports:
+          - containerPort: 8000
+            protocol: TCP
+          envFrom:
+          - configMapRef:
+              name: plweb-config
+          - secretRef:
+              name: postgressecret
+          - secretRef:
+              name: app-secret
+          volumeMounts:
+          - mountPath: /code/data
+            name: data
