@@ -13,7 +13,6 @@ RUN set -ex; \
 COPY docker-entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 COPY ./etc /etc
-RUN chown -R icecast2 /etc/icecast2
 
 EXPOSE 9000
 

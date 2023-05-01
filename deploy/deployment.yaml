@@ -28,23 +28,23 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: default-player
+  name: player-default
   namespace: plstreamer
 spec:
   selector:
     matchLabels:
-      app: default-player
+      app: player-default
   template:
     metadata:
       labels:
-        app: default-player
+        app: player-default
     spec:
       volumes:
       - name: data
         persistentVolumeClaim:
           claimName: plstreamerdata
       containers:
-        - name: default-player
+        - name: player-default
           image: localhost:32000/player
           resources:
             requests:
@@ -64,23 +64,23 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dancehall-player
+  name: player-dancehall
   namespace: plstreamer
 spec:
   selector:
     matchLabels:
-      app: dancehall-player
+      app: player-dancehall
   template:
     metadata:
       labels:
-        app: dancehall-player
+        app: player-dancehall
     spec:
       volumes:
       - name: data
         persistentVolumeClaim:
           claimName: plstreamerdata
       containers:
-        - name: dancehall-player
+        - name: player-dancehall
           image: localhost:32000/player
           resources:
             requests:
@@ -100,23 +100,23 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rnb-player
+  name: player-rnb
   namespace: plstreamer
 spec:
   selector:
     matchLabels:
-      app: rnb-player
+      app: player-rnb
   template:
     metadata:
       labels:
-        app: rnb-player
+        app: player-rnb
     spec:
       volumes:
       - name: data
         persistentVolumeClaim:
           claimName: plstreamerdata
       containers:
-        - name: rnb-player
+        - name: player-rnb
           image: localhost:32000/player
           resources:
             requests:
@@ -130,3 +130,5 @@ spec:
           volumeMounts:
           - mountPath: /code
             name: data
+
+            
