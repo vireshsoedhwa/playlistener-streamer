@@ -8,13 +8,10 @@ RUN echo $VERSION > version
 RUN set -ex; \
         apt-get update; \
         apt-get install -y --no-install-recommends \
-            mpd ;
+            mpc;
 
 COPY docker-entrypoint.sh /usr/local/bin
-COPY ./etc /etc
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-EXPOSE 6600
-
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["mpd", "--no-daemon", "--verbose"]
+CMD ["tail", "-f", "/dev/null"]

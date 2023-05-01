@@ -1,8 +1,30 @@
 version: '3.8'
 
 services:
+
+  icecast:
+    command: tail -f /dev/null
+    image: icecast
+    build:
+      context: icecast
+    ports:
+      - "9000:9000"
+
+  mpc:
+    command: tail -f /dev/null
+    image: mpc
+    build:
+      context: mpc
+    environment:
+      - GENRE=dancehall
+    depends_on:
+      - mpd_dancehall
+      - mpd_default
+
+# ====== below is for all the individual players
+
   mpd_dancehall:
-    command: tail -f /var/log/mpd/mpd.log
+    command: mpd --no-daemon --verbose
     image: mpd
     build:
       context: mpd
@@ -15,7 +37,7 @@ services:
       - icecast
 
   mpd_default:
-    command: tail -f /var/log/mpd/mpd.log
+    command: mpd --no-daemon --verbose
     image: mpd
     build:
       context: mpd
@@ -27,10 +49,3 @@ services:
     depends_on:
       - icecast
 
-  icecast:
-    command: tail -f /dev/null
-    image: icecast
-    build:
-      context: icecast
-    ports:
-      - "9000:9000"
