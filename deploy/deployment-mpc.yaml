@@ -20,7 +20,7 @@ spec:
               memory: "128Mi"
               cpu: "250m"
           env:
-          - name: MPD_HOST_DEFAULT
-            value: "player-default"
-          - name: MPD_HOST_DANCEHALL
-            value: "player-dancehall"
+          - name: MPD_HOST
+            value: "default-svc"
+          - name: MPD_PORT
+            value: "6600"
