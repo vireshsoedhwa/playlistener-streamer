@@ -39,7 +39,7 @@ spec:
               cpu: "250m"
           env:
           - name: MPD_HOST
-            value: "default-svc"
+            value: "localhost"
           - name: MPD_PORT
             value: "6600"
 ---
@@ -131,6 +131,6 @@ spec:
               cpu: "250m"
           env:
           - name: MPD_HOST
-            value: "rnb-svc"
+            value: "localhost"
           - name: MPD_PORT
             value: "6600"
