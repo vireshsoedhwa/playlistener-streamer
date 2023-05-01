@@ -10,7 +10,7 @@ audio_output {
 	genre		\""${GENRE}"\"
 	host		\""${ICECAST_HOST}"\"
 	port		\"9000\"
-	mount		\"/live/"${GENRE}"\"
+	mount		\"/"${GENRE}"\"
 	password	\"hackme\"
 	quality		\"5.0\"
 	# bitrate		\"128\"

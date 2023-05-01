@@ -14,18 +14,18 @@ chmod 777 /code/db
 
 echo "setup db file and playlists directory done..."
 
-mpd
-sleep 2
-echo "mpd running..."
+# mpd
+# sleep 2
+# echo "mpd running..."
 
-mpc add /
-echo "playlist created..."
-mpc random on
-mpc repeat on
-echo "current playlist content..."
-mpc playlist
-mpc play
+# mpc add /
+# echo "playlist created..."
+# mpc random on
+# mpc repeat on
+# echo "current playlist content..."
+# mpc playlist
+# mpc play
 
 
-echo "Starting player image version: `cat /code/version`"
+echo "Image version: `cat /code/version`"
 exec "$@"
