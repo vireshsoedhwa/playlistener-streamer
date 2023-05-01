@@ -134,3 +134,50 @@ spec:
             value: "localhost"
           - name: MPD_PORT
             value: "6600"
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: player-80s
+  namespace: plstreamer
+spec:
+  selector:
+    matchLabels:
+      app: player-80s
+  template:
+    metadata:
+      labels:
+        app: player-80s
+    spec:
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: plstreamerdata
+      containers:
+        - name: player-80s
+          image: localhost:32000/mpd
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+          env:
+          - name: GENRE
+            value: "80s"
+          - name: ICECAST_HOST
+            value: "plstreamer-svc"
+          volumeMounts:
+          - mountPath: /code
+            name: data
+        - name: mpc-80s
+          image: localhost:32000/mpc
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+          env:
+          - name: MPD_HOST
+            value: "localhost"
+          - name: MPD_PORT
+            value: "6600"
