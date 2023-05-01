@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
->&2 echo "loading playlist category: "${GENRE}""
+echo "loading playlist category: "${GENRE}""
 [ ! -d "/code/data/"${GENRE}"" ] && echo "Directory /code/data/"${GENRE}" DOES NOT exists" && exit 1
 
 mkdir -p /code/playlists
@@ -12,20 +12,20 @@ chmod 777 /code/db
 
 . /etc/customize_mpd_conf.sh
 
->&2 echo "setup db file and playlists directory done..."
+echo "setup db file and playlists directory done..."
 
 mpd
 sleep 2
->&2 echo "mpd running..."
+echo "mpd running..."
 
 mpc add /
->&2 echo "playlist created..."
+echo "playlist created..."
 mpc random on
 mpc repeat on
->&2 echo "current playlist content..."
+echo "current playlist content..."
 mpc playlist
 mpc play
 
 
->&2 echo "Starting player image version: `cat /code/version`"
+echo "Starting player image version: `cat /code/version`"
 exec "$@"
