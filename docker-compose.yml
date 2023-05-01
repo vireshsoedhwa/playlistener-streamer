@@ -16,7 +16,8 @@ services:
     build:
       context: mpc
     environment:
-      - GENRE=dancehall
+      - MPD_HOST_DEFAULT=mpd_default
+      - MPD_HOST_DANCEHALL=mpd_dancehall
     depends_on:
       - mpd_dancehall
       - mpd_default

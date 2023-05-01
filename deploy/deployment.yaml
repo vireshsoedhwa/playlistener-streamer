@@ -50,6 +50,9 @@ spec:
             requests:
               memory: "128Mi"
               cpu: "250m"
+          ports:
+          - containerPort: 6600
+            protocol: TCP
           env:
           - name: GENRE
             value: "default"
@@ -86,6 +89,9 @@ spec:
             requests:
               memory: "128Mi"
               cpu: "250m"
+          ports:
+          - containerPort: 6600
+            protocol: TCP
           env:
           - name: GENRE
             value: "dancehall"
@@ -122,6 +128,9 @@ spec:
             requests:
               memory: "128Mi"
               cpu: "250m"
+          ports:
+          - containerPort: 6600
+            protocol: TCP
           env:
           - name: GENRE
             value: "rnb"
