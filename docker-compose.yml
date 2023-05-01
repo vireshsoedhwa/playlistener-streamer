@@ -15,10 +15,9 @@ services:
     build:
       context: mpc
     environment:
-      - MPD_HOST_DEFAULT=mpd_default
-      - MPD_HOST_DANCEHALL=mpd_dancehall
+      - MPD_HOST=mpd_default
+      - MPD_PORT=6600
     depends_on:
-      - mpd_dancehall
       - mpd_default
 
 # ====== below is for all the individual players
