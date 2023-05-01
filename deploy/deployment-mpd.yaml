@@ -1,33 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: streamer
-  namespace: plstreamer
-spec:
-  selector:
-    matchLabels:
-      app: streamer
-  template:
-    metadata:
-      labels:
-        app: streamer
-    spec:
-      containers:
-        - name: streamer
-          image: localhost:32000/icecast
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "250m"
-          ports:
-          - containerPort: 9000
-            protocol: TCP
-
----
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: player-default
   namespace: plstreamer
 spec:
@@ -45,7 +18,7 @@ spec:
           claimName: plstreamerdata
       containers:
         - name: player-default
-          image: localhost:32000/player
+          image: localhost:32000/mpd
           resources:
             requests:
               memory: "128Mi"
@@ -84,7 +57,7 @@ spec:
           claimName: plstreamerdata
       containers:
         - name: player-dancehall
-          image: localhost:32000/player
+          image: localhost:32000/mpd
           resources:
             requests:
               memory: "128Mi"
@@ -123,7 +96,7 @@ spec:
           claimName: plstreamerdata
       containers:
         - name: player-rnb
-          image: localhost:32000/player
+          image: localhost:32000/mpd
           resources:
             requests:
               memory: "128Mi"
@@ -139,5 +112,3 @@ spec:
           volumeMounts:
           - mountPath: /code
             name: data
-
-            
