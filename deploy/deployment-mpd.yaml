@@ -10,7 +10,6 @@ spec:
   template:
     metadata:
       labels:
-        component: player
         app: player-default
     spec:
       volumes:
@@ -50,7 +49,6 @@ spec:
   template:
     metadata:
       labels:
-        component: player
         app: player-dancehall
     spec:
       volumes:
@@ -90,7 +88,6 @@ spec:
   template:
     metadata:
       labels:
-        component: player
         app: player-rnb
     spec:
       volumes:
