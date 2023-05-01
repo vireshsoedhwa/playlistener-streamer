@@ -9,13 +9,11 @@ RUN set -ex; \
         apt-get update; \
         apt-get install -y --no-install-recommends \
             mpd \
-            mpc \
-            ;
+            mpc;
 
 COPY docker-entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 COPY ./etc /etc
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 EXPOSE 8000
 
