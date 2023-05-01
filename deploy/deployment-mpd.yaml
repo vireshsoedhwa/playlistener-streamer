@@ -23,9 +23,6 @@ spec:
             requests:
               memory: "128Mi"
               cpu: "250m"
-          ports:
-          - containerPort: 6600
-            protocol: TCP
           env:
           - name: GENRE
             value: "default"
@@ -34,7 +31,17 @@ spec:
           volumeMounts:
           - mountPath: /code
             name: data
-
+        - name: mpc-default
+          image: localhost:32000/mpc
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+          env:
+          - name: MPD_HOST
+            value: "default-svc"
+          - name: MPD_PORT
+            value: "6600"
 ---
 
 apiVersion: apps/v1
@@ -62,9 +69,6 @@ spec:
             requests:
               memory: "128Mi"
               cpu: "250m"
-          ports:
-          - containerPort: 6600
-            protocol: TCP
           env:
           - name: GENRE
             value: "dancehall"
@@ -73,7 +77,17 @@ spec:
           volumeMounts:
           - mountPath: /code
             name: data
-
+        - name: mpc-dancehall
+          image: localhost:32000/mpc
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+          env:
+          - name: MPD_HOST
+            value: "dancehall-svc"
+          - name: MPD_PORT
+            value: "6600"
 ---
 
 apiVersion: apps/v1
@@ -101,9 +115,6 @@ spec:
             requests:
               memory: "128Mi"
               cpu: "250m"
-          ports:
-          - containerPort: 6600
-            protocol: TCP
           env:
           - name: GENRE
             value: "rnb"
@@ -112,3 +123,14 @@ spec:
           volumeMounts:
           - mountPath: /code
             name: data
+        - name: mpc-rnb
+          image: localhost:32000/mpc
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+          env:
+          - name: MPD_HOST
+            value: "rnb-svc"
+          - name: MPD_PORT
+            value: "6600"
