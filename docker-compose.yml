@@ -28,7 +28,7 @@ services:
     build:
       context: mpd
     volumes:
-      - ./mpd/data:/code/data
+      - ./data:/code/data
     environment:
       - GENRE=dancehall
       - ICECAST_HOST=icecast
@@ -41,7 +41,7 @@ services:
     build:
       context: mpd
     volumes:
-      - ./mpd/data:/code/data
+      - ./data:/code/data
     environment:
       - GENRE=default
       - ICECAST_HOST=icecast
