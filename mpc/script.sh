@@ -6,4 +6,3 @@ export $(grep -v '^#' /code/.env | xargs -0)
 
 mpc rescan --wait
 mpc stats
-mpc play
