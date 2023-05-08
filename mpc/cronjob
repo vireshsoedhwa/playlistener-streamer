@@ -1,2 +1,2 @@
 
-*/15 * * * * /bin/sh /usr/local/bin/script.sh >> /code/cron.log 2>&1
+*/5 * * * * /bin/sh /usr/local/bin/script.sh >> /code/cron.log 2>&1
