@@ -2,38 +2,8 @@ version: '3.8'
 
 services:
 
-  # icecast:
-  #   command: tail -f /dev/null
-  #   image: icecast
-  #   build:
-  #     context: icecast
-  #   ports:
-  #     - "9000:9000"
 
-  mpc:
-    image: mpc
-    build:
-      context: mpc
-    environment:
-      - MPD_HOST=mpd_default
-      - MPD_PORT=6600
-    depends_on:
-      - mpd_default
-
-# ====== below is for all the individual players
-
-  # mpd_dancehall:
-  #   command: mpd --no-daemon --verbose
-  #   image: mpd
-  #   build:
-  #     context: mpd
-  #   volumes:
-  #     - ./data:/code/data
-  #   environment:
-  #     - GENRE=dancehall
-  #     - ICECAST_HOST=icecast
-  #   depends_on:
-  #     - icecast
+# ====== these are the players for the different genres
 
   mpd_default:
     command: mpd --no-daemon --verbose
@@ -45,7 +15,18 @@ services:
       - ./data:/code/data
     environment:
       - GENRE=default
+      - PORT=9000
     ports:
       - "9000:9000"
-      - "6600:6600"
 
+# ====== below is for controlling the players
+
+  mpc:
+    image: mpc
+    build:
+      context: mpc
+    environment:
+      - MPD_HOST=mpd_default
+      - MPD_PORT=6600
+    depends_on:
+      - mpd_default
