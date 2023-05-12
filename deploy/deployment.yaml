@@ -26,8 +26,8 @@ spec:
           env:
           - name: GENRE
             value: "default"
-          - name: ICECAST_HOST
-            value: "plstreamer-svc"
+          - name: PORT
+            value: "9000"
           volumeMounts:
           - mountPath: /code
             name: data
@@ -72,8 +72,8 @@ spec:
           env:
           - name: GENRE
             value: "dancehall"
-          - name: ICECAST_HOST
-            value: "plstreamer-svc"
+          - name: PORT
+            value: "9000"
           volumeMounts:
           - mountPath: /code
             name: data
@@ -118,8 +118,8 @@ spec:
           env:
           - name: GENRE
             value: "rnb"
-          - name: ICECAST_HOST
-            value: "plstreamer-svc"
+          - name: PORT
+            value: "9000"
           volumeMounts:
           - mountPath: /code
             name: data
@@ -165,8 +165,8 @@ spec:
           env:
           - name: GENRE
             value: "80s"
-          - name: ICECAST_HOST
-            value: "plstreamer-svc"
+          - name: PORT
+            value: "9000"
           volumeMounts:
           - mountPath: /code
             name: data

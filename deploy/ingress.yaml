@@ -16,10 +16,17 @@ spec:
   - host: stream.wieru.com
     http: 
       paths:
-        - path: /
+        - path: /default
           pathType: Prefix
           backend:
             service:
-              name: plstreamer-svc
+              name: default-svc
+              port:
+                number: 9000
+        - path: /rnb
+          pathType: Prefix
+          backend:
+            service:
+              name: rnb-svc
               port:
                 number: 9000

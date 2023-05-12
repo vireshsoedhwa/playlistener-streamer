@@ -2,12 +2,10 @@ version: '3.8'
 
 services:
 
-
 # ====== these are the players for the different genres
 
   mpd_default:
     command: mpd --no-daemon --verbose
-    # command: tail -f /dev/null
     image: mpd
     build:
       context: mpd
