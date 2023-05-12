@@ -18,11 +18,46 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: dancehall-svc
+  namespace: plstreamer
+spec:
+  selector:
+    app: player-dancehall
+  ports:
+  - name: app
+    protocol: TCP
+    port: 9000
+    targetPort: 9000
+  type: NodePort
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
   name: rnb-svc
   namespace: plstreamer
 spec:
   selector:
     app: player-rnb
+  ports:
+  - name: app
+    protocol: TCP
+    port: 9000
+    targetPort: 9000
+  type: NodePort
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: 80s-svc
+  namespace: plstreamer
+spec:
+  selector:
+    app: player-80s
   ports:
   - name: app
     protocol: TCP
