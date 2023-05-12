@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: default-svc
+  name: svc-default
   namespace: plstreamer
 spec:
   selector:
@@ -18,7 +18,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: dancehall-svc
+  name: svc-dancehall
   namespace: plstreamer
 spec:
   selector:
@@ -35,7 +35,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: rnb-svc
+  name: svc-rnb
   namespace: plstreamer
 spec:
   selector:
@@ -53,7 +53,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: 80s-svc
+  name: svc-80s
   namespace: plstreamer
 spec:
   selector:

@@ -20,13 +20,27 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: default-svc
+              name: svc-default
               port:
                 number: 9000
         - path: /rnb
           pathType: Prefix
           backend:
             service:
-              name: rnb-svc
+              name: svc-rnb
+              port:
+                number: 9000
+        - path: /dancehall
+          pathType: Prefix
+          backend:
+            service:
+              name: svc-dancehall
+              port:
+                number: 9000
+        - path: /80s
+          pathType: Prefix
+          backend:
+            service:
+              name: svc-80s
               port:
                 number: 9000
