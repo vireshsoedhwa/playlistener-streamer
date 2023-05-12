@@ -4,16 +4,16 @@ metadata:
   name: plstreamer-ingress
   namespace: plstreamer
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
     nginx.ingress.kubernetes.io/proxy-body-size: 1000m
 spec:
   ingressClassName: public
   tls:
   - hosts:
-    - streamer.wieru.com
+    - stream.wieru.com
     secretName: tls-secret
   rules:
-  - host: streamer.wieru.com
+  - host: stream.wieru.com
     http: 
       paths:
         - path: /

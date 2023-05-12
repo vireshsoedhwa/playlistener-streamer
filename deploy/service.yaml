@@ -12,3 +12,20 @@ spec:
     port: 9000
     targetPort: 9000
   type: NodePort
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: default-svc
+  namespace: plstreamer
+spec:
+  selector:
+    app: streamer
+  ports:
+  - name: app
+    protocol: TCP
+    port: 9000
+    targetPort: 9000
+  type: NodePort
