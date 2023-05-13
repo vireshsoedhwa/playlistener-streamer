@@ -10,5 +10,5 @@ audio_output {
     port           \"${PORT}\"    
     quality        \"5.0\"            # do not define if bitrate is defined    
 #    bitrate        \"128\"            # do not define if quality is defined    
-    format         \"44100:16:1\"    
+    format         \"48000:24:2\"    
 }" >> /etc/mpd_custom.conf
