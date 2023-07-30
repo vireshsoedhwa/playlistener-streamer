@@ -19,11 +19,11 @@ set -e
 #     }" >> /etc/mpd_custom.conf
 # done
 
-echo "music_directory \"/code/data/"${GENRE}"\"
+echo "music_directory \"/code/data/"${DIR}"\"
 
 audio_output {    
     type           \"httpd\"    
-    name           \"${GENRE}\"    
+    name           \"${DIR}\"    
     encoder        \"vorbis\"        # optional, vorbis or lame    
     port           \"${PORT}\"    
     quality        \"5.0\"            # do not define if bitrate is defined    

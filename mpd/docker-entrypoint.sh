@@ -1,8 +1,10 @@
 #!/bin/sh
 set -e
 
-echo "loading playlist category: "${GENRE}""
-[ ! -d "/code/data/"${GENRE}"" ] && echo "Directory /code/data/"${GENRE}" DOES NOT exists" && exit 1
+ln -sf /usr/share/zoneinfo/America/Vancouver /etc/localtime
+
+echo "loading Directory: "${DIR}""
+[ ! -d "/code/data/"${DIR}"" ] && echo "Directory /code/data/"${DIR}" DOES NOT exists" && exit 1
 
 mkdir -p /code/playlists
 rm -f /code/db

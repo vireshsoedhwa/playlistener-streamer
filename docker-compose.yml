@@ -12,7 +12,7 @@ services:
     volumes:
       - ./data:/code/data
     environment:
-      - GENRE=default
+      - DIR=default
       - PORT=9000
     ports:
       - "9000:9000"
@@ -27,6 +27,7 @@ services:
     volumes:
       - ./data:/code/data
     environment:
+      - DIR=default
       - MPD_HOST=mpd_default
       - MPD_PORT=6600
     depends_on:
